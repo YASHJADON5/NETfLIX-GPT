@@ -5,7 +5,7 @@ import lang from '../../utils/constants';
 
 
 function LangSelector() {
-    console.log(lang[0].id);
+   
     const dispatch= useDispatch();
     const changeLang=(e)=>{
      

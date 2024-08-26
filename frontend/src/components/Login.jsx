@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './Header';
 
-import MainHeading from './MainHeading';
-import { Link } from 'react-router-dom';
 
 import Signinform from './Signinform';
 import Background from './Background';

@@ -15,38 +15,6 @@ function Signinform() {
   const [errMessageForEmail,setErrMessageForEmail ]= useState("");
   const [errMessageForPassword,setErrMessageForPassword ]= useState("");
 
-  useEffect(()=>{
-    
-    const token= localStorage.getItem("Netflix-token")
-
-    
-    if(token){
-      console.log("YASH")
-      axios.get(`${base_url}/api/v1/users/validate-token`,{
-        headers:{
-          "authorization":`Bearer ${token}`
-        }
-      })
-      .then((response)=>{
-       
-        navigate('/dashboard')
-            
-      })
-      .catch((err)=>{
-          
-      })
-
-      
-
-
-       
-
-    }
-
-
-
-  },[])
-
   const handleButtonClick=async(e)=>{
     e.preventDefault();
 

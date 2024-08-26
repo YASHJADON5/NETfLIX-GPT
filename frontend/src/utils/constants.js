@@ -11,15 +11,15 @@ const lang =[
 ]
 const languageSelector = {
   
-    english: {
+    English: {
       Search: "Search",
       gptPlaceholder: "What do you want to search?",
     },
-    hindi: {
+    Hindi: {
       Search: "खोजे",
       gptPlaceholder: "आप क्या खोजना चाहते हैं?",
     },
-    spanish: {
+    Spanish: {
       Search: "buscar",
       gptPlaceholder: "¿Qué quieres buscar?",
     },
