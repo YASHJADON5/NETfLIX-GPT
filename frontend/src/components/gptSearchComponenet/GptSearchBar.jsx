@@ -9,6 +9,7 @@ const TMDBAuthorizationTOken = import.meta.env.VITE_TMDB_AUTHORIZATIO_TOKEN
 
 function GptSearchBar() {
   const dispatch= useDispatch()
+  const[loading,setLoading]=useState(false);
   
 
   const [error, setError] = useState(null); 
@@ -32,8 +33,12 @@ function GptSearchBar() {
   }
 
   const handleLogValue = async () => {
-    setError(null);  // Reset error before new request
-    if(!inputData.current.value) return;
+    setLoading(true);
+    setError(null); 
+    if(!inputData.current.value) { 
+      setLoading(false) 
+      return
+    };
 
     if (inputData.current) {
       // console.log(inputData.current.value);
@@ -61,13 +66,24 @@ function GptSearchBar() {
         setError('An error occurred: ' + error.message);
       }
     }
+    finally{
+      setLoading(false);
+    }
   };
+
+  if(loading) {
+    return (
+    <div className='flex  items-center justify-center h-full w-full '>
+    <svg className='h-48 w-48' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150"><path fill="none" stroke="#FF0F0F" strokeWidth="15" strokeLinecap="round" strokeDasharray="300 385" strokeDashoffset="0" d="M275 75c0 31-27 50-50 50-58 0-92-100-150-100-28 0-50 22-50 50s23 50 50 50c58 0 92-100 150-100 24 0 50 19 50 50Z"><animate attributeName="stroke-dashoffset" calcMode="spline" dur="2.6" values="685;-685" keySplines="0 0 1 1" repeatCount="indefinite"></animate></path></svg>
+    </div>
+    )
+  }
 
   return (
     <div className='flex flex-col items-center w-screen md:w-full '>
       <div className='flex w-full md:w-5/6 justify-between md:mt-20 mt-10'>
         <input ref={inputData} className='md:w-5/6 w-11/12 ml-3 md:ml-0 p-2 h-10 md:h-12 pl-4 text-sm md:text-lg rounded-md mr-4' type="text" placeholder={languageSelector[selector].gptPlaceholder} />
-        <button onClick={handleLogValue} className='flex justify-center bg-[#f9f9f9] rounded-md px-4 py-2 text-lg mr-3 md:ml-2 h-10 md:h-12'>
+        <button disabled={loading} onClick={handleLogValue} className='flex justify-center bg-[#f9f9f9] rounded-md px-4 py-2 text-lg mr-3 md:ml-2 h-10 md:h-12'>
           <img className='h-8 w-8 mr-2 md:pl-0 md:pb-0 pl-1 pb-1' src={SearchIcon} alt="" />
           <span className='hidden md:block text-lg font-semibold font-sans mt-0.5 pr-8 md:pr-4 '>{languageSelector[selector].Search}</span>
         </button>

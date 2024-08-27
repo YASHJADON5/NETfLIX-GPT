@@ -19,7 +19,7 @@ function Signin() {
 
     
     if(token){
-      console.log("YASH")
+      // console.log("YASH")
       axios.get(`${base_url}/api/v1/users/validate-token`,{
         headers:{
           "authorization":`Bearer ${token}`
