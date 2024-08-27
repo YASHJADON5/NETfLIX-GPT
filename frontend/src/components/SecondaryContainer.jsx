@@ -27,7 +27,7 @@ function SecondaryContainer() {
     
     
   return (
-    <div className='bg-black'>
+    <div className='bg-black w-screen'>
     <div className='relative -mt-52'>
         <Movielist title={"Trending Movies"} movies={trendingmovies.movies}></Movielist>
          <Movielist title={"Popular Movies"} movies={popularMovies.similarMovies}></Movielist>

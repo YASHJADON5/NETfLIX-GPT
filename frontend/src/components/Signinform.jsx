@@ -11,12 +11,14 @@ function Signinform() {
   const navigate= useNavigate();
   const email= useRef(null)
   const password= useRef(null)
+  const [loading,setLoading]=useState(false);
 
   const [errMessageForEmail,setErrMessageForEmail ]= useState("");
   const [errMessageForPassword,setErrMessageForPassword ]= useState("");
 
   const handleButtonClick=async(e)=>{
     e.preventDefault();
+    setLoading(true);
 
     const validation = validatorForSignin(email.current.value,password.current.value)
 
@@ -39,6 +41,7 @@ function Signinform() {
           const token = response.data.token;
            if(token){
              localStorage.setItem("Netflix-token", token)
+             setLoading(false);
              Navigate('/dashboard')
            }
     
@@ -51,6 +54,18 @@ function Signinform() {
 
 
   }
+
+  if(loading) {
+    return (
+
+    <div className='flex  items-center justify-center h-screen w-screen bg-[#1E1E1E]'>
+    <svg className='h-48 w-48' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150"><path fill="none" stroke="#FF0F0F" stroke-width="15" stroke-linecap="round" stroke-dasharray="300 385" stroke-dashoffset="0" d="M275 75c0 31-27 50-50 50-58 0-92-100-150-100-28 0-50 22-50 50s23 50 50 50c58 0 92-100 150-100 24 0 50 19 50 50Z"><animate attributeName="stroke-dashoffset" calcMode="spline" dur="2.6" values="685;-685" keySplines="0 0 1 1" repeatCount="indefinite"></animate></path></svg>
+    </div>
+    )
+
+
+  }
+
 
 
 
@@ -69,7 +84,7 @@ function Signinform() {
            
             <input ref={email} className='mt-4 p-4 w-5/6  md:w-9/12  bg-[#161616b3] bg-opacity-70 rounded text-white' type="text" name="" id="" placeholder='Email or mobile number' />
             <p className='text-red-600 text-lg font-semibold  mx-16'>{errMessageForEmail}</p>
-            <input ref={password} className='mt-4 p-4 w-5/6 md:w-9/12  bg-[#161616b3] bg-opacity-70 rounded text-white'  type="text" placeholder='Password'/>
+            <input ref={password} className='mt-4 p-4 w-5/6 md:w-9/12  bg-[#161616b3] bg-opacity-70 rounded text-white'  type="password" placeholder='Password'/>
             <p className='text-red-600 text-lg font-semibold  mx-16'>{errMessageForPassword}</p>
             <button onClick={handleButtonClick} className='text-white text-center p-3 mt-4 w-3/6  md:w-9/12  bg-red-600 rounded font-semibold hover:bg-red-700 transition ease-in duration-300'>Sign in</button>
             

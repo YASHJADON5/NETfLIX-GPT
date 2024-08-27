@@ -9,7 +9,7 @@ function VideoTitle() {
   // console.log( mainMovie)
   // console.log(mainMovie.overview);
   return (
-    <div className='absolute z-20 h-72 w-80 overflow-hidden top-56 left-24 md:top-72 md:left-40  hidden md:block'>
+    <div className='relative z-20 h-72 w-80 overflow-hidden  md:top-72 md:left-40  hidden sm:hidded md:block'>
       <h1 className='text-white font-sans font-semibold text-lg md:text-4xl'>The Flash</h1>
     <h1 className='text-white font-sans font-semibold text-xs md:text-lg leading-6'>The Flash (2023) follows Barry Allen as he alters the timeline to save his mother, creating a dangerous alternate reality. He teams up with Batman and Supergirl to fix the chaos and face General Zod.</h1>
     <div className='flex mt-4'>

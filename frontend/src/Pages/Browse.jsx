@@ -65,13 +65,12 @@ function Browse() {
         setIsLoading(false);
       })
       .catch((err)=>{
-        if(err.response.request.status==403){
+      
           setIsLoading(false);
           Navigate('/')
 
           return 
-        }
-        console.log(err)
+     
       })
 
     }
@@ -99,7 +98,7 @@ function Browse() {
   }
 
   return (
-    <div >
+    <div className='no-scrollbar' >
         
         
         {selector?<MainContainer   /> : <><MainContainer   />

@@ -11,7 +11,7 @@ import GptSearchMainComponent from './gptSearchComponenet/GptSearchMainComponent
 function MainContainer() {
   const selector= useSelector((store)=>store.gpt.showGptSearch)
   return (
-    <div className='relative h-screen w-full bg-gradient-to-b from-black to black'>
+    <div className='relative h-screen w-screen bg-gradient-to-b from-black to black'>
         {selector ?<GptSearchMainComponent /> : null}
         <BrowseHeader/>
         <VideoBackground />
